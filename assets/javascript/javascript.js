@@ -12,8 +12,15 @@ var config = {
 firebase.initializeApp(config);
 
 
-var tuGoApiKey = "";
-var queryUrl = "https://api.tugo.com/v1/travelsafe/countries/:country"
+
+var tuGoApiKey 
+var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries/:country"
+var googleMapApi = "AIzaSyDqX1VGaQvp5vQLnVevNjdrNp_sgkZHIvo";
+var location;
+var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi + "&q=" + location;
+var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
+var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + location + "?key=" + googleFlyApi;
+
 
 $.ajax({
     url: queryUrl,
@@ -26,4 +33,4 @@ $.ajax({
 //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
 
 var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
-var queryUrl1 = "www.eventbriteapi.com/v3/events/search/?q=" + location + "&token=" + eventBriteApiKey
+var queryUrl2 = "www.eventbriteapi.com/v3/events/search/?q=" + location + "&token=" + eventBriteApiKey
