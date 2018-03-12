@@ -26,16 +26,88 @@
 
     </head>
 <body>
+    <nav id="navbar-example2" class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#fat">@fat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#mdo">@mdo</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#one">one</a>
+                    <a class="dropdown-item" href="#two">two</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#three">three</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">My Travels</h1>
+            <p class="lead"></p>
+        </div>
+    </div>
     <div class="container">
-        
-
-
-
-
-
-
-
-
+        <div class="row">
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                <div id="mapContent">
+                Map API
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <form>
+                    <div class="form-group">
+                        <label id="labelBox" for="addHobby">Travel Location</label>
+                        <input  type="text" class="form-control" id="travelLocation">
+                    </div>
+                    <button  id="newLocationSubmit" type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                <div id="infoWiki">
+                    Info/Wiki API
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Links</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="weatherAPI">
+                Weather API
+            </div>
+        </div>
+        <div class="row">
+            <div id="footer">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Footer
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
     </div> <!-- Close full page container -->
 
 
