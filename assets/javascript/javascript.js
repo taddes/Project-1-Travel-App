@@ -12,25 +12,25 @@ var config = {
 firebase.initializeApp(config);
 
 
-var location;
+var place;
 
 var tuGoApiKey = "";
 var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries/:country"
 
 var googleMapApi = "AIzaSyDqX1VGaQvp5vQLnVevNjdrNp_sgkZHIvo";
-var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi + "&q=" + location;
+var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi + "&q=" + place;
 
 var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
-var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + location + "?key=" + googleFlyApi;
+var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + place + "?key=" + googleFlyApi;
 
 var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
-var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + location + "&token=" + eventBriteApiKey
+var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey
 
 var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
-var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + openWeatherApiKey;
+var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + openWeatherApiKey;
 
 //Wikipedia
-var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=Frog&prop=" + location + "&format=json&formatversion=2";
+var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=Frog&prop=" + place + "&format=json&formatversion=2";
 
 //tuGo
 $.ajax({
