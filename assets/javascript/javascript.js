@@ -12,8 +12,8 @@ var config = {
 firebase.initializeApp(config);
 
 
-var tuGoApiKey = ;
-var queryUrl = "https://api.tugo.com/v1/travelsafe/countries/:country;
+var tuGoApiKey = "";
+var queryUrl = "https://api.tugo.com/v1/travelsafe/countries/:country"
 
 $.ajax({
     url: queryUrl,
@@ -22,3 +22,8 @@ $.ajax({
     console.log(response);
 })
 
+
+//https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
+
+var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
+var queryUrl1 = "www.eventbriteapi.com/v3/events/search/?q=" + location + "&token=" + eventBriteApiKey
