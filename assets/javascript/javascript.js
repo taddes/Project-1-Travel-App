@@ -24,54 +24,60 @@ var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
 var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + location + "?key=" + googleFlyApi;
 
 var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
-var queryUrl4 = "www.eventbriteapi.com/v3/events/search/?q=" + location + "&token=" + eventBriteApiKey
+var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + location + "&token=" + eventBriteApiKey
 
 var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
 var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + openWeatherApiKey;
 
 //Wikipedia
-queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=Frog&prop=" + location + "&format=json&formatversion=2";
+var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=Frog&prop=" + location + "&format=json&formatversion=2";
 
+//tuGo
 $.ajax({
     url: queryUrl1,
     method: "GET"
-}).then(function (response1) {
-    console.log(response1);
+}).then(function (tuGo) {
+    console.log(tuGo);
 })
 
+//Google Map
 $.ajax({
     url: queryUrl2,
     method: "GET"
-}).then(function (response2) {
-    console.log(response2);
+}).then(function (googleMaps) {
+    console.log(googleMaps);
 })
 
+//Google Fly
 $.ajax({
     url: queryUrl3,
     method: "GET"
-}).then(function (response3) {
-    console.log(response3);
+}).then(function (googleFly) {
+    console.log(googleFly);
 })
 
+//Event Brite
 $.ajax({
     url: queryUrl4,
     method: "GET"
-}).then(function (response4) {
-    console.log(response4);
+}).then(function (eventBrite) {
+    console.log(eventBrite);
 })
 
+//Open Weather
 $.ajax({
     url: queryUrl5,
     method: "GET"
-}).then(function (response5) {
-    console.log(response5);
+}).then(function (openWeather) {
+    console.log(openWeather);
 })
 
+//Wikipedia
 $.ajax({
     url: queryUrl6,
     method: "GET"
-}).then(function (response6) {
-    console.log(response6);
+}).then(function (wikipedia) {
+    console.log(wikipedia);
 })
 
 
