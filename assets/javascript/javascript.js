@@ -36,8 +36,8 @@ var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi
 var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
 var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + place + "?key=" + googleFlyApi;
 
-var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
-var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey
+var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR";
+var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey;
 
 var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
 var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=imperia&appid=" + openWeatherApiKey;
@@ -63,7 +63,8 @@ $.ajax({
      } 
 }).then(function (response) {
     console.log(response);
-=======
+})
+
 //Google Fly
 $.ajax({
     url: queryUrl3,
