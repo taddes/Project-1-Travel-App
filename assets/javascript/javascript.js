@@ -40,6 +40,7 @@ var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR";
 var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey;
 
 var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
+// place needs to be a city
 var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=imperia&appid=" + openWeatherApiKey;
 
 //Wikipedia
@@ -86,13 +87,13 @@ $.ajax({
     url: queryUrl5,
     method: "GET"
 }).then(function (openWeather) {
-    var temp = openWeather.main.temp;
-    var weather = openWeather.weather.main;
-    var high = openWeather.main.temp_max;
-    var low = openWeather.main.temp_min;
-    var wind = openWeather.main.wind.speed;
-    var humidity = openWeather.main.humidity;
-    console.log(temp,weather,high,low,wind,humidity);
+    $(".city").html("<h1>" + openWeather.name + " Weather Details</h1>");
+    $(".temp").text("Current Temperature (°F): " + openWeather.main.temp);
+    $(".high").text("High (°F): " + openWeather.main.temp_max);
+    $(".low").text("Low (F): " + openWeather.main.temp_min);
+    $(".weather").text("Weather Conditions: " + openWeather.weather.main);
+    $(".humidity").text("Humidity: " + openWeather.main.humidity);
+    $(".wind").text("Wind Speed (m/s): " + openWeather.main.wind.speed);
 })
 
 //Wikipedia
