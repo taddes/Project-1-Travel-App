@@ -14,11 +14,13 @@ firebase.initializeApp(config);
 
 var place;
 
-var tuGoApiKey = "";
-var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries/:country"
+
+var tuGoApiKey = "xspyubpakcte72gaz2tw6qdd";
+var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries";
 
 var googleMapApi = "AIzaSyDqX1VGaQvp5vQLnVevNjdrNp_sgkZHIvo";
 var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi + "&q=" + place;
+
 
 var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
 var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + place + "?key=" + googleFlyApi;
@@ -32,13 +34,6 @@ var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + place
 //Wikipedia
 var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=" + place + "&prop=images&format=json&formatversion=2";
 
-//tuGo
-$.ajax({
-    url: queryUrl1,
-    method: "GET"
-}).then(function (tuGo) {
-    console.log(tuGo);
-})
 
 //Google Map
 $.ajax({
@@ -48,6 +43,16 @@ $.ajax({
     console.log(googleMaps);
 })
 
+//tuGo AJAX call
+$.ajax({
+    url: queryUrl1,
+    method: "GET",
+    headers: {
+        "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd" 
+     } 
+}).then(function (response) {
+    console.log(response);
+=======
 //Google Fly
 $.ajax({
     url: queryUrl3,
@@ -80,6 +85,11 @@ $.ajax({
     console.log(wikipedia);
 })
 
+// <select name="countryChosen"> 
+//   <option value="id">"englishName"</option>
+// </select>
+//
 
 //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
+
 
