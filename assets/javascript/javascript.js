@@ -128,4 +128,16 @@ $.ajax({
 
 //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
 
-
+//Google Maps lat and lng need to be changed for specific places.
+function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    var map = new google.maps.Map(document.getElementById('mapContent'), {
+      zoom: 4,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+  //AIzaSyCBNs5xGO2H4kcLTK3eoxf966QgDaqseK4 maps api
