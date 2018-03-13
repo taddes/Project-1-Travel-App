@@ -30,7 +30,7 @@ var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
 var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + openWeatherApiKey;
 
 //Wikipedia
-var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=Frog&prop=" + place + "&format=json&formatversion=2";
+var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=" + place + "&prop=images&format=json&formatversion=2";
 
 //tuGo
 $.ajax({
