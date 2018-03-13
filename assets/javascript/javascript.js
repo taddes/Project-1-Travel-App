@@ -6,10 +6,21 @@ var config = {
   authDomain: "my-travels-project.firebaseapp.com",
   databaseURL: "https://my-travels-project.firebaseio.com",
   projectId: "my-travels-project",
-  storageBucket: "",
+  storageBucket: "my-travels-project.appspot.com",
   messagingSenderId: "203317717944"
 };
 firebase.initializeApp(config);
+var travelDatabase = firebase.database();
+$('.dropdpwnCountry').on('click', function(event) {
+    event.preventDefault();
+    // vars for all stored data
+    var storedData = {
+        
+
+    };
+    database.ref().push(storedData);
+
+});
 
 
 var place;
