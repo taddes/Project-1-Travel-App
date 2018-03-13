@@ -111,6 +111,16 @@ $.ajax({
     $(".weather").text("Weather Conditions: " + openWeather.weather.main);
     $(".humidity").text("Humidity: " + openWeather.main.humidity);
     $(".wind").text("Wind Speed (m/s): " + openWeather.main.wind.speed);
+
+    var newWeather = {
+        country: openWeather.name,
+        temperature: openWeather.main.temp,
+        high: openWeather.main.temp_max,
+        low: openWeather.main.temp_min,
+        conditions: openWeather.weather.main,
+        humidity: openWeather.main.humidity,
+        wind: openWeather.main.wind.speed
+      };
 })
 
 //Wikipedia
