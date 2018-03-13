@@ -22,15 +22,42 @@ var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
 var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + location + "?key=" + googleFlyApi;
 
 
-$.ajax({
+   //tuGo AJAX call
+   $.ajax({
     url: queryUrl1,
     method: "GET",
     headers: {
-        "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd" 
-     } 
+        "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd"
+    }
 }).then(function (response) {
     console.log(response);
-})
+
+    var dropdown = document.getElementById("dropdownCountry");
+    dropdown.length = 0
+
+    let defaultOption = document.createElement("option");
+    defaultOption.text = "Choose Country";
+
+    dropdown.appendChild(defaultOption);
+    dropdown.selectedIndex = 0;
+
+    for (var i = 0; i < response.length; i++) {
+        var option = document.createElement("a");
+        option.setAttribute("class", "dropdown-item");
+        option.text = response[i].englishName;
+        option.value = response[i].id;
+        dropdown.appendChild(option);
+    }
+
+
+
+});
+
+
+// <select id="locality-dropdown" name="locality"> 
+//   <option value="id">"englishName"</option>
+// </select>
+//
 
 // <select name="countryChosen"> 
 //   <option value="id">"englishName"</option>
