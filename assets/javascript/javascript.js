@@ -10,16 +10,33 @@ var config = {
   messagingSenderId: "203317717944"
 };
 firebase.initializeApp(config);
+
 var travelDatabase = firebase.database();
+
 $('.dropdpwnCountry').on('click', function(event) {
     event.preventDefault();
     // vars for all stored data
-    var storedData = {
-        
+    var mapData;
+    var weatherData;
+    var infoData;  // pulled from wikiAPI
 
+    // object to hold all data pulled from APIs
+    var storedData = {
+       Map: mapData,
+       Weather: weatherData, 
+       Info: infoData
     };
     database.ref().push(storedData);
 
+});
+
+// creates event for childed added in firebase database
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+   
+    // vars to hold stored data that will be output to our page
+    var mapData = childSnapshot.val().Map;
+    var weatherData = childSnapshot.val().Weather;
+    var infoData = childSnapshot.val().Info;
 });
 
 
