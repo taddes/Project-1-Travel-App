@@ -11,29 +11,6 @@
 
         <!--CSS Link -->
         <link rel="stylesheet" href="./assets/css/style.css">
-        <!--Google fonts link -->
-        <!-- <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> -->
-    
-        <!-- Firebase Reference -->
-        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    
-        <!-- Moment.js Reference -->
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  
-        <!-- jquery Reference -->
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-        <!--Bootstrap 4 CDN Reference -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    </head>
-<body>
-    <div class="container">
-        
-
-
     <!--Google fonts link -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> -->
 
@@ -62,29 +39,25 @@
 </head>
 
 <body>
-    <nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <nav id="navbar-example2" class="navbar fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <ul class="nav nav-pills">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#fat">@fat</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#mdo">@mdo</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#one">one</a>
-                    <a class="dropdown-item" href="#two">two</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#three">three</a>
-                </div>
             </li>
         </ul>
     </nav>
+    <div data-spy="scroll" data-target=".navbar">
+        
+
+    
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">My Travels</h1>
+            <h1 id= 'fat' class="display-4">My Travels</h1>
             <p class="lead"></p>
         </div>
     </div>
@@ -160,6 +133,7 @@
         </div>
     </div>
     <!-- Close full page container -->
+</div>
 
 
 
