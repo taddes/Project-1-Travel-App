@@ -22,21 +22,21 @@ $('.dropdpwnCountry').on('click', function(event) {
 
     // object to hold all data pulled from APIs
     var storedData = {
-       Map: mapData,
-       Weather: weatherData, 
-       Info: infoData
+       map: mapData,
+       weather: weatherData, 
+       info: infoData
     };
-    database.ref().push(storedData);
+    travelDatabase.ref().push(storedData);
 
 });
 
 // creates event for childed added in firebase database
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+travelDatabase.ref().on("child_added", function(childSnapshot, prevChildKey) {
    
     // vars to hold stored data that will be output to our page
-    var mapData = childSnapshot.val().Map;
-    var weatherData = childSnapshot.val().Weather;
-    var infoData = childSnapshot.val().Info;
+    var mapData = childSnapshot.val().map;
+    var weatherData = childSnapshot.val().weather;
+    var infoData = childSnapshot.val().info;
 });
 
 
@@ -138,4 +138,16 @@ $.ajax({
 
 //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
 
-
+//Google Maps lat and lng need to be changed for specific places.
+function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    var map = new google.maps.Map(document.getElementById('mapContent'), {
+      zoom: 4,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+  //AIzaSyCBNs5xGO2H4kcLTK3eoxf966QgDaqseK4 maps api
