@@ -27,7 +27,7 @@ var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
 var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey
 
 var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
-var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + openWeatherApiKey;
+var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=imperia&appid=" + openWeatherApiKey;
 
 //Wikipedia
 var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=" + place + "&prop=images&format=json&formatversion=2";
@@ -69,7 +69,13 @@ $.ajax({
     url: queryUrl5,
     method: "GET"
 }).then(function (openWeather) {
-    console.log(openWeather);
+    var temp = openWeather.main.temp;
+    var weather = openWeather.weather.main;
+    var high = openWeather.main.temp_max;
+    var low = openWeather.main.temp_min;
+    var wind = openWeather.main.wind.speed;
+    var humidity = openWeather.main.humidity;
+    console.log(temp,weather,high,low,wind,humidity);
 })
 
 //Wikipedia
