@@ -42,31 +42,26 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 var place;
 
-var tuGoApiKey = "";
-var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries/:country"
+
+var tuGoApiKey = "xspyubpakcte72gaz2tw6qdd";
+var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries";
 
 var googleMapApi = "AIzaSyDqX1VGaQvp5vQLnVevNjdrNp_sgkZHIvo";
 var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi + "&q=" + place;
 
+
 var googleFlyApi = "AIzaSyABcRXvnEe7i7jhMRMDJnlADv3ARCch9do";
 var queryUrl3 = "https://www.googleapis.com/qpxExpress/v1/trips/" + place + "?key=" + googleFlyApi;
 
-var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR"
-var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey
+var eventBriteApiKey ="CE4R5PQ42MM4QQYFKNWR";
+var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + place + "&token=" + eventBriteApiKey;
 
 var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
-var queryUrl5 = "http://samples.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + openWeatherApiKey;
+var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=imperia&appid=" + openWeatherApiKey;
 
 //Wikipedia
 var queryUrl6 = "https://en.wikipedia.org/w/api.php?action=query&titles=" + place + "&prop=images&format=json&formatversion=2";
 
-//tuGo
-$.ajax({
-    url: queryUrl1,
-    method: "GET"
-}).then(function (tuGo) {
-    console.log(tuGo);
-})
 
 //Google Map
 $.ajax({
@@ -74,6 +69,17 @@ $.ajax({
     method: "GET"
 }).then(function (googleMaps) {
     console.log(googleMaps);
+})
+
+//tuGo AJAX call
+$.ajax({
+    url: queryUrl1,
+    method: "GET",
+    headers: {
+        "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd" 
+     } 
+}).then(function (response) {
+    console.log(response);
 })
 
 //Google Fly
@@ -97,7 +103,13 @@ $.ajax({
     url: queryUrl5,
     method: "GET"
 }).then(function (openWeather) {
-    console.log(openWeather);
+    var temp = openWeather.main.temp;
+    var weather = openWeather.weather.main;
+    var high = openWeather.main.temp_max;
+    var low = openWeather.main.temp_min;
+    var wind = openWeather.main.wind.speed;
+    var humidity = openWeather.main.humidity;
+    console.log(temp,weather,high,low,wind,humidity);
 })
 
 //Wikipedia
@@ -108,6 +120,11 @@ $.ajax({
     console.log(wikipedia);
 })
 
+// <select name="countryChosen"> 
+//   <option value="id">"englishName"</option>
+// </select>
+//
 
 //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
+
 
