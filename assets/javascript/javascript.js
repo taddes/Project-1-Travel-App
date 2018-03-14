@@ -122,19 +122,20 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
             var advisories = response.advisories;
-            console.log("Country: " + response.name);
+            $(".country").text("Country: " + response.name);
             for( i = 0; i < response.lawAndCulture.lawAndCultureInfo.length; i++) {
-                console.log("law and culture " + response.lawAndCulture.lawAndCultureInfo[i].description);
+                $(".law").text("law and culture " + response.lawAndCulture.lawAndCultureInfo[i].description);
             }
-            console.log("travel advisories: " + response.advisories.description);
-            console.log("climate conditions: " + response.climate.description);
-            console.log("safety conditions" + response.safety.description);
+            $(".travelAD").text("travel advisories: " + response.advisories.description);
+            $(".climate").text("climate conditions: " + response.climate.description);
+            $(".safety").text("safety conditions" + response.safety.description);
              console.log(response.entryExitRequirement.requirementInfo[1].description);
             for( i = 0; i < response.safety.safetyInfo.length; i++) {
 
-                console.log("entry exit: " + response.safety.safetyInfo[i].description);
+                $(".entry").text("entry exit: " + response.safety.safetyInfo[i].description);
             }
             
+           
 
             var latitude = parseInt(response.offices[0].latitude);
             console.log(latitude);
