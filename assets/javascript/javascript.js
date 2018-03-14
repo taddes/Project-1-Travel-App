@@ -97,24 +97,39 @@ $(document).ready(function () {
             var advisories = response.advisories;
             console.log(response.advisories);
 
-           var latitude = parseInt(response.offices[0].latitude);
+            var latitude = parseInt(response.offices[0].latitude);
             console.log(latitude);
 
             var longitude = parseInt(response.offices[0].longitude);
             console.log(longitude);
 
             function initMap() {
-                var uluru = {lat: latitude, lng: longitude};
+                var uluru = { lat: latitude, lng: longitude };
                 var map = new google.maps.Map(document.getElementById('mapContent'), {
-                  zoom: 5,
-                  center: uluru
+                    zoom: 5,
+                    //   center: uluru
                 });
                 var marker = new google.maps.Marker({
-                  position: uluru,
-                  map: map
+                    //   position: uluru,
+                    map: map
                 });
-              } 
-              initMap();
+            }
+            initMap();
+
+            var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
+            var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + openWeatherApiKey;
+            $.ajax({
+                url: queryUrl5,
+                method: "GET"
+            }).then(function (openWeather) {
+                $(".city").html("<h1>" + openWeather.name + " Weather Details</h1>");
+                $(".temp").text("Current Temperature (°F): " + openWeather.main.temp);
+                $(".high").text("High (°F): " + openWeather.main.temp_max);
+                $(".low").text("Low (F): " + openWeather.main.temp_min);
+                $(".weather").text("Weather Conditions: " + openWeather.weather.main);
+                $(".humidity").text("Humidity: " + openWeather.main.humidity);
+                $(".wind").text("Wind Speed (m/s): " + openWeather.main.wind.speed);
+            })
 
         });
 
