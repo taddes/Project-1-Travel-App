@@ -107,12 +107,12 @@ $(document).ready(function () {
                 var uluru = { lat: latitude, lng: longitude };
                 var map = new google.maps.Map(document.getElementById('mapContent'), {
                     zoom: 5,
-                    //   center: uluru
+                    center: uluru
                 });
-                var marker = new google.maps.Marker({
-                    //   position: uluru,
+               /* var marker = new google.maps.Marker({
+                    position: uluru,
                     map: map
-                });
+                });*/
             }
             initMap();
 
