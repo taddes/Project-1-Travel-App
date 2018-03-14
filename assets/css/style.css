@@ -18,13 +18,23 @@
 #citySubmit {
     margin-top: 10px;
 }
-.container {
-   
-}
+
 
 
 #footer {
     width: 100%;
 }
 
+body { 
+    /* The image used */
+    background-image: url("../images/pexels-photo-326311.jpeg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
 
