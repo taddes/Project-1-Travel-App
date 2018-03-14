@@ -14,6 +14,8 @@ $(document).ready(function () {
 
     var travelDatabase = firebase.database();
 
+
+
     var place;
 
     var yelpApi = "https://api.yelp.com/v3/businesses/search?"
@@ -102,8 +104,6 @@ $(document).ready(function () {
 
     });
 
-    
-
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
         event.preventDefault();
@@ -122,17 +122,20 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
             var advisories = response.advisories;
-            console.log("Country: " + response.name);
-            for( i = 0; i < response.lawAndCulture.lawAndCultureInfo.length; i++) {
-                console.log("law and culture " + response.lawAndCulture.lawAndCultureInfo[i].description);
+            console.log(lawAndCulture.name);
+            for( i = 0; i < response.safety.safetyInfo.length; i++) {
+                console.log(lawAndCulture.lawAndCultureInfo[i].category);;
+                console.log(lawAndCulture.lawAndCultureInfo[i].description);;
+
             }
-            console.log("travel advisories: " + response.advisories.description);
-            console.log("climate conditions: " + response.climate.description);
-            console.log("safety conditions" + response.safety.description);
+            
+            console.log(response.advisories.description);
+            console.log(response.climate.description);
+            console.log(response.safety.description);
              console.log(response.entryExitRequirement.requirementInfo[1].description);
             for( i = 0; i < response.safety.safetyInfo.length; i++) {
-
-                console.log("entry exit: " + response.safety.safetyInfo[i].description);
+                console.log(response.safety.safetyInfo[i].category);
+                console.log(response.safety.safetyInfo[i].description);
             }
             
 
@@ -142,18 +145,15 @@ $(document).ready(function () {
             var longitude = parseInt(response.offices[0].longitude);
             console.log(longitude);
 
-           
-            var uluru = { lat: latitude, lng: longitude };
-            var map = new google.maps.Map(document.getElementById('mapContent'), {
-                zoom: 5,
-                center: uluru
-            });
-            /* var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });*/
-            
-            
+            function initMap() {
+                var uluru = { lat: latitude, lng: longitude };
+                var map = new google.maps.Map(document.getElementById('mapContent'), {
+                    zoom: 5,
+                      center: uluru
+                });
+
+            }
+            initMap();
 
             var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
             var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + openWeatherApiKey;
@@ -161,19 +161,36 @@ $(document).ready(function () {
                 url: queryUrl5,
                 method: "GET"
             }).then(function (openWeather) {
-                $(".temp").text("Current Temperature: " + openWeather.main.temp + "°F");
-                $(".high").text("High: " + openWeather.main.temp_max + "°F");
-                $(".low").text("Low: " + openWeather.main.temp_min + "°F");
-                $(".weather").text("Weather Conditions: " + openWeather.weather[0].main);
-                $(".desc").text("Weather Details: " + openWeather.weather[0].description);
-                $(".humidity").text("Humidity: " + openWeather.main.humidity + "%");
-                $(".wind").text("Wind Speed: " + openWeather.wind.speed + " m/s");
+                $(".city").html("<h1>" + openWeather.name + " Weather Details</h1>");
+                $(".temp").text("Current Temperature (°F): " + openWeather.main.temp);
+                $(".high").text("High (°F): " + openWeather.main.temp_max);
+                $(".low").text("Low (F): " + openWeather.main.temp_min);
+                $(".weather").text("Weather Conditions: " + openWeather.weather.main);
+                $(".humidity").text("Humidity: " + openWeather.main.humidity);
+                $(".wind").text("Wind Speed (m/s): " + openWeather.main.wind.speed);
             })
 
         });
 
 
+
+
+
+
+
+
+
     })
+
+
+
+
+
+
+
+
+
+
 
     //Google Fly
     $.ajax({
@@ -208,20 +225,11 @@ $(document).ready(function () {
     })
 
 
+
+
+
+
     //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
 
 
 });
-function initMap() {
-    var uluru = { lat: 0, lng: 0 };
-    var map = new google.maps.Map(document.getElementById('mapContent'), {
-        zoom: 1,
-        center: uluru
-        
-    });
-   /* var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-    });*/
-}
-
