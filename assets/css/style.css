@@ -2,3 +2,29 @@
     height: 400px;
     width: 100%;
    }
+
+.carousel-item{
+    height:320px;
+    width:1230px;
+}
+.caro{
+    padding: 20px;
+}
+
+#countrySubmit {
+ margin-top: 10px; 
+ 
+}
+#citySubmit {
+    margin-top: 10px;
+}
+.container {
+   
+}
+
+
+#footer {
+    width: 100%;
+}
+
+
