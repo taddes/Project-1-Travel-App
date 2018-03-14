@@ -77,6 +77,20 @@ $(document).ready(function () {
 
     });
 
+    function initMap() {
+        var uluru = { lat: 0, lng: 0 };
+        var map = new google.maps.Map(document.getElementById('mapContent'), {
+            zoom: 1,
+            center: uluru
+            
+        });
+       /* var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });*/
+    }
+    initMap()
+
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
         event.preventDefault();
@@ -132,15 +146,6 @@ $(document).ready(function () {
             })
 
         });
-
-
-
-
-
-
-
-
-
     })
 
 
