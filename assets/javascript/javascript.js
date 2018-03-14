@@ -107,12 +107,12 @@ $(document).ready(function () {
                 var uluru = { lat: latitude, lng: longitude };
                 var map = new google.maps.Map(document.getElementById('mapContent'), {
                     zoom: 5,
-                    //   center: uluru
+                    center: uluru
                 });
-                var marker = new google.maps.Marker({
-                    //   position: uluru,
+               /* var marker = new google.maps.Marker({
+                    position: uluru,
                     map: map
-                });
+                });*/
             }
             initMap();
 
@@ -122,13 +122,13 @@ $(document).ready(function () {
                 url: queryUrl5,
                 method: "GET"
             }).then(function (openWeather) {
-                $(".city").html("<h1>" + openWeather.name + " Weather Details</h1>");
-                $(".temp").text("Current Temperature (°F): " + openWeather.main.temp);
-                $(".high").text("High (°F): " + openWeather.main.temp_max);
-                $(".low").text("Low (F): " + openWeather.main.temp_min);
-                $(".weather").text("Weather Conditions: " + openWeather.weather.main);
-                $(".humidity").text("Humidity: " + openWeather.main.humidity);
-                $(".wind").text("Wind Speed (m/s): " + openWeather.main.wind.speed);
+                $(".city").html("<h1>" + "Current Weather Details</h1>");
+                $(".temp").text("Current Temperature: " + openWeather.main.temp + "°F");
+                $(".high").text("High: " + openWeather.main.temp_max + "°F");
+                $(".low").text("Low: " + openWeather.main.temp_min + "°F");
+                $(".weather").text("Weather Conditions: " + openWeather.weather[0].main);
+                $(".humidity").text("Humidity: " + openWeather.main.humidity + "%");
+                $(".wind").text("Wind Speed: " + openWeather.wind.speed + " m/s");
             })
 
         });
