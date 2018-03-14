@@ -14,10 +14,7 @@ $(document).ready(function () {
 
     var travelDatabase = firebase.database();
 
-
-
     var place;
-
 
     var tuGoApiKey = "xspyubpakcte72gaz2tw6qdd";
     var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries";
@@ -77,6 +74,8 @@ $(document).ready(function () {
 
     });
 
+    
+
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
         event.preventDefault();
@@ -103,18 +102,18 @@ $(document).ready(function () {
             var longitude = parseInt(response.offices[0].longitude);
             console.log(longitude);
 
-            function initMap() {
-                var uluru = { lat: latitude, lng: longitude };
-                var map = new google.maps.Map(document.getElementById('mapContent'), {
-                    zoom: 5,
-                    center: uluru
-                });
-               /* var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                });*/
-            }
-            initMap();
+           
+            var uluru = { lat: latitude, lng: longitude };
+            var map = new google.maps.Map(document.getElementById('mapContent'), {
+                zoom: 5,
+                center: uluru
+            });
+            /* var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });*/
+            
+            
 
             var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
             var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + openWeatherApiKey;
@@ -122,36 +121,19 @@ $(document).ready(function () {
                 url: queryUrl5,
                 method: "GET"
             }).then(function (openWeather) {
-                $(".city").html("<h1>" + openWeather.name + " Weather Details</h1>");
-                $(".temp").text("Current Temperature (°F): " + openWeather.main.temp);
-                $(".high").text("High (°F): " + openWeather.main.temp_max);
-                $(".low").text("Low (F): " + openWeather.main.temp_min);
-                $(".weather").text("Weather Conditions: " + openWeather.weather.main);
-                $(".humidity").text("Humidity: " + openWeather.main.humidity);
-                $(".wind").text("Wind Speed (m/s): " + openWeather.main.wind.speed);
+                $(".temp").text("Current Temperature: " + openWeather.main.temp + "°F");
+                $(".high").text("High: " + openWeather.main.temp_max + "°F");
+                $(".low").text("Low: " + openWeather.main.temp_min + "°F");
+                $(".weather").text("Weather Conditions: " + openWeather.weather[0].main);
+                $(".desc").text("Weather Details: " + openWeather.weather[0].description);
+                $(".humidity").text("Humidity: " + openWeather.main.humidity + "%");
+                $(".wind").text("Wind Speed: " + openWeather.wind.speed + " m/s");
             })
 
         });
 
 
-
-
-
-
-
-
-
     })
-
-
-
-
-
-
-
-
-
-
 
     //Google Fly
     $.ajax({
@@ -186,11 +168,20 @@ $(document).ready(function () {
     })
 
 
-
-
-
-
     //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
 
 
 });
+function initMap() {
+    var uluru = { lat: 0, lng: 0 };
+    var map = new google.maps.Map(document.getElementById('mapContent'), {
+        zoom: 1,
+        center: uluru
+        
+    });
+   /* var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });*/
+}
+

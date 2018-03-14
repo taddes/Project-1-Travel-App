@@ -37,22 +37,23 @@
 </head>
 <body>
     
+        <div data-spy="scroll" data-target=".navbar">
 
-        <div class="container">
+            <div class="container">
 
-            <body>
-                <nav id="navbar-example2" class="navbar fixed-top navbar-light bg-light">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#fat">@fat</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#mdo">@mdo</a>
-                        </li>
-                    </ul>
-                </nav>
-                
+                <body>
+                    <nav id="navbar-example2" class="navbar fixed-top navbar-light bg-light">
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <ul class="nav nav-pills">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#fat">@fat</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#mdo">@mdo</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
                     <div class="container caro">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
@@ -86,35 +87,54 @@
                         </div>
                     </div>
 
-                
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9 col-md-9 col-lg-9">
-                            <div id="mapContent">
-                                Map API
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-9 col-md-9 col-lg-9">
+                                <div id="mapContent">
+                                    Map API
+                                </div>
                             </div>
+
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3">
                             <form>
                                 <div class = "card" style="width: 12.8rem;">
                                     <div class="card-body">
-                                        <div class="form-group">
+                             <div class="form-group">
                                             <label for="sel1">Select Country</label>
                                             <select class="form-control" id="dropDownCountry"></select>
                                             <button type="submit" class="btn btn-primary" id="countrySubmit">Submit</button>
                                         </div>
-                                    </div>
+
+                                    </form>
+                                  </div>
+                                  
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Current Weather Details</h5>
+                                            <div class="temp">Current Temperature:</div>
+                                            <div class="high">High:</div>
+                                            <div class="low">Low:</div>
+                                            <div class="weather">Weather Conditions:</div>
+                                            <div class="desc">Weather Details:</div>
+                                            <div class="humidity">Humidity:</div>
+                                            <div class="wind">Wind Speed:</div>
+                                        </div>
+                                      </div>
+                                   
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    
                     <div class="row">
                         <div class="col-sm-9 col-md-9 col-lg-9">
                             <div id="infoWiki">
                                 Info/Wiki API
                             </div>
                         </div>
+
                         <div class="col-sm-3 col-md-3 col-lg-3">
                             <div id="citySearch">
                                 <div class="card" style="width: 12.8rem;">
@@ -124,12 +144,12 @@
                                             <input type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Enter City">
                                             <button type="submit" class="btn btn-primary" id="citySubmit">Submit</button>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                           
                         </div>
+
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div id="weatherAPI">
                             Weather API
                             <div class="city"></div>
@@ -140,7 +160,7 @@
                             <div class="humidity"></div>
                             <div class="wind"></div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div id="footer">
                             <div class="card text-center">
@@ -154,14 +174,17 @@
                                 <div class="card-footer text-muted">
                                     2 days ago
                                 </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+            </div>
         </div>
+        <!-- Close full page container -->
     </div>
-    <!-- Close full page container -->
-    
+
 
 
 
