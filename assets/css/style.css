@@ -11,7 +11,20 @@
     padding: 20px;
 }
 
+#countrySubmit {
+ margin-top: 10px; 
+ 
+}
+#citySubmit {
+    margin-top: 10px;
+}
+.container {
+   
+}
+
+
 #footer {
     width: 100%;
 }
+
 
