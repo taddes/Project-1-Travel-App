@@ -9,11 +9,18 @@ $(document).ready(function () {
         storageBucket: "my-travels-project.appspot.com",
         messagingSenderId: "203317717944"
     };
-
     firebase.initializeApp(config);
-
     var travelDatabase = firebase.database();
+    $('.dropdpwnCountry').on('click', function (event) {
+        event.preventDefault();
+        // vars for all stored data
+        var storedData = {
 
+
+        };
+        database.ref().push(storedData);
+
+    });
 
 
     var place;
@@ -21,7 +28,7 @@ $(document).ready(function () {
 
     var tuGoApiKey = "xspyubpakcte72gaz2tw6qdd";
     var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries";
-
+    
 
     var googleMapApi = "AIzaSyDqX1VGaQvp5vQLnVevNjdrNp_sgkZHIvo";
     var queryUrl2 = "https://www.google.com/maps/embed/v1/place?key=" + googleMapApi + "&q=" + place;
@@ -75,49 +82,29 @@ $(document).ready(function () {
             dropdown.appendChild(option);
         }
 
+ 
+
     });
 
     //Grab the selected country
-    $("#countrySubmit").on("click", function (event) {
+    $("#countrySubmit").on("click", function(event) {
         event.preventDefault();
 
         var submitted = $("select#dropDownCountry option:checked").val();
         console.log(submitted);
 
-        //second AJAX call to tuGO API
+ //second AJAX call to tuGO API
 
-        $.ajax({
-            url: queryUrl1 + "/" + submitted,
-            method: "GET",
-            headers: {
-                "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd"
-            }
-        }).then(function (response) {
-            console.log(response);
-            var advisories = response.advisories;
-            console.log(response.advisories);
-
-           var latitude = parseInt(response.offices[0].latitude);
-            console.log(latitude);
-
-            var longitude = parseInt(response.offices[0].longitude);
-            console.log(longitude);
-
-            function initMap() {
-                var uluru = {lat: latitude, lng: longitude};
-                var map = new google.maps.Map(document.getElementById('mapContent'), {
-                  zoom: 5,
-                  center: uluru
-                });
-                var marker = new google.maps.Marker({
-                  position: uluru,
-                  map: map
-                });
-              } 
-              initMap();
-
-        });
-
+ $.ajax({
+    url: queryUrl1 + "/" + submitted,
+    method: "GET",
+    headers: {
+        "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd"
+    }
+    }).then(function (response) {
+        console.log(response);
+    });
+    
 
 
 

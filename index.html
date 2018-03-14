@@ -95,16 +95,9 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <form>
                     <div class="form-group">
-                        <label id="labelBox" for="addHobby">Travel Location</label>
-                        <input type="text" class="form-control" id="travelLocation">
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Country List
-                        </button>
-                        <div class="dropdown-menu" id="dropdownCountry">
-
-                        </div>
+                        <label for="sel1">Select Country</label>
+                        <select class="form-control" id="dropDownCountry"></select>
+                        <button type="submit" class="btn btn-primary" id="countrySubmit">Submit</button>
                     </div>
                 </form>
             </div>
@@ -130,6 +123,13 @@
         <div class="row">
             <div id="weatherAPI">
                 Weather API
+                <div class="city"></div>
+                <div class="temp"></div>
+                <div class="high"></div>
+                <div class="low"></div>
+                <div class="weather"></div>
+                <div class="humidity"></div>
+                <div class="wind"></div>
             </div>
         </div>
         <div class="row">
@@ -154,6 +154,11 @@
 
 
     <script src="./assets/javascript/javascript.js" type="text/javascript"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBNs5xGO2H4kcLTK3eoxf966QgDaqseK4&callback=initMap">
+    </script> 
+
+
 
 </body>
 
