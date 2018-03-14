@@ -35,12 +35,8 @@
         crossorigin="anonymous"></script>
 
 </head>
-
 <body>
-
-    =======
-
-    <div data-spy="scroll" data-target=".navbar">
+    
 
         <div class="container">
 
@@ -101,10 +97,14 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3">
                             <form>
-                                <div class="form-group">
-                                    <label for="sel1">Select Country</label>
-                                    <select class="form-control" id="dropDownCountry"></select>
-                                    <button type="submit" class="btn btn-primary" id="countrySubmit">Submit</button>
+                                <div class = "card" style="width: 12.8rem;">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="sel1">Select Country</label>
+                                            <select class="form-control" id="dropDownCountry"></select>
+                                            <button type="submit" class="btn btn-primary" id="countrySubmit">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -116,15 +116,15 @@
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Search Links</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                                        content.
-                                    </p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
+                            <div id="citySearch">
+                                <div class="card" style="width: 12.8rem;">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Enter City</label>
+                                            <input type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Enter City">
+                                            <button type="submit" class="btn btn-primary" id="citySubmit">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -158,11 +158,10 @@
                         </div>
                     </div>
                 </div>
-
         </div>
     </div>
     <!-- Close full page container -->
-    </div>
+    
 
 
 
