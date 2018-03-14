@@ -77,19 +77,7 @@ $(document).ready(function () {
 
     });
 
-    function initMap() {
-        var uluru = { lat: 0, lng: 0 };
-        var map = new google.maps.Map(document.getElementById('mapContent'), {
-            zoom: 1,
-            center: uluru
-            
-        });
-       /* var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });*/
-    }
-    initMap()
+    
 
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
@@ -117,18 +105,18 @@ $(document).ready(function () {
             var longitude = parseInt(response.offices[0].longitude);
             console.log(longitude);
 
-            function initMap() {
-                var uluru = { lat: latitude, lng: longitude };
-                var map = new google.maps.Map(document.getElementById('mapContent'), {
-                    zoom: 5,
-                    center: uluru
-                });
-               /* var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                });*/
-            }
-            initMap();
+           
+            var uluru = { lat: latitude, lng: longitude };
+            var map = new google.maps.Map(document.getElementById('mapContent'), {
+                zoom: 5,
+                center: uluru
+            });
+            /* var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });*/
+            
+            
 
             var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
             var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + openWeatherApiKey;
@@ -193,9 +181,21 @@ $(document).ready(function () {
 
 
 
-
+  
 
     //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
 
 
 });
+function initMap() {
+    var uluru = { lat: 0, lng: 0 };
+    var map = new google.maps.Map(document.getElementById('mapContent'), {
+        zoom: 1,
+        center: uluru
+        
+    });
+   /* var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });*/
+}
