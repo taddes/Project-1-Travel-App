@@ -14,10 +14,7 @@ $(document).ready(function () {
 
     var travelDatabase = firebase.database();
 
-
-
     var place;
-
 
     var tuGoApiKey = "xspyubpakcte72gaz2tw6qdd";
     var queryUrl1 = "https://api.tugo.com/v1/travelsafe/countries";
@@ -122,36 +119,18 @@ $(document).ready(function () {
                 url: queryUrl5,
                 method: "GET"
             }).then(function (openWeather) {
-                $(".city").html("<h1>" + "Current Weather Details</h1>");
                 $(".temp").text("Current Temperature: " + openWeather.main.temp + "°F");
                 $(".high").text("High: " + openWeather.main.temp_max + "°F");
                 $(".low").text("Low: " + openWeather.main.temp_min + "°F");
                 $(".weather").text("Weather Conditions: " + openWeather.weather[0].main);
+                $(".desc").text("Weather Details: " + openWeather.weather[0].description);
                 $(".humidity").text("Humidity: " + openWeather.main.humidity + "%");
                 $(".wind").text("Wind Speed: " + openWeather.wind.speed + " m/s");
             })
 
         });
 
-
-
-
-
-
-
-
-
     })
-
-
-
-
-
-
-
-
-
-
 
     //Google Fly
     $.ajax({
@@ -184,13 +163,5 @@ $(document).ready(function () {
     }).then(function (wikipedia) {
         console.log(wikipedia);
     })
-
-
-
-
-
-
-    //https://www.eventbriteapi.com/v3/events/search/?q=newyork&token=CE4R5PQ42MM4QQYFKNWR
-
 
 });
