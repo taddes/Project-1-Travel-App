@@ -231,6 +231,7 @@ $(document).ready(function() {
       var testSubstring = testString.substring(i, i + 1);
       if (numberArray.indexOf(parseInt(testSubstring)) > -1) {
         $("#demo").text("Input Invalid, Please Enter a City");
+        $("#inputCity").val("");
         return;
       } else {
         $("#demo").text("Valid Input");
