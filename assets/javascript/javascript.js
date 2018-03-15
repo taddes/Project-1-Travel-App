@@ -14,6 +14,8 @@ $(document).ready(function () {
 
     var travelDatabase = firebase.database();
 
+    
+
     var place;
 
     var yelpApi = "https://api.yelp.com/v3/businesses/search?"
@@ -73,7 +75,13 @@ $(document).ready(function () {
         console.log(googleMaps);
     })
 
+
+   
+
+
     //tuGo AJAX call to populate drop down country options
+
+   
     $.ajax({
         url: queryUrl1,
         method: "GET",
@@ -99,14 +107,30 @@ $(document).ready(function () {
             option.value = response[i].id;
             dropdown.appendChild(option);
         }
+    
 
     });
+
+    travelDatabase.ref('countries').once('value').then(function(snapshot) {
+        console.log(snapshot.val());
+        var array = snapshot.val()
+        var dropdown = document.getElementById("dropDownCountry")
+        for (var i = 0; i < array.length; i++) {
+            console.log(array[i].englishName)
+            var option = document.createElement("option");
+            option.setAttribute("class", "dropdown-item");
+             option.text = array[i].englishName;
+             option.value = array[i].id;
+             dropdown.appendChild(option);
+        }
+    }); 
 
 
 
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
         event.preventDefault();
+  
 
         var submitted = $("select#dropDownCountry option:checked").val();
         console.log(submitted);
@@ -121,20 +145,50 @@ $(document).ready(function () {
             }
         }).then(function (response) {
             console.log(response);
+
             var advisories = response.advisories;
-            $(".country").html("<h5>Country: " + response.name + "</h5>");
+            $(".country").html("<div><h3>Country: " + response.name + "</h3></div>");
+            console.log(response.lawAndCulture.lawAndCultureInfo);
+
+            // for (i = 0; i < response.lawAndCulture.lawAndCultureInfo.length; i++) {
+            //     $(".law").html("<h5>Law and Culture:</h5><p> " + response.lawAndCulture.lawAndCultureInfo[i].description + "</p>");
+            // }
+
+           
+            $(".law").html("<div><h5>Law and Culture:</h5></div>");
+
+            var textLawArray = [];
+
             for (i = 0; i < response.lawAndCulture.lawAndCultureInfo.length; i++) {
-                $(".law").html("<h5>Law and Culture:</h5><p> " + response.lawAndCulture.lawAndCultureInfo[i].description + "</p>");
+                textLawArray += "<div><p>" + response.lawAndCulture.lawAndCultureInfo[i].category + ": " + response.lawAndCulture.lawAndCultureInfo[i].description + "</p></div>";
             }
+            $(".lawData").html("<div>" + textLawArray + "</div>");
+
+           
             $(".travelAD").html("<h5>Travel Advisories:</h5><p> " + response.advisories.description + "</p>");
-            $(".climate").html("<h5>Climate Conditions:</h5><p> " + response.climate.description + "</p>");
-            $(".safety").html("<h5>Safety Conditions:</h5><p>" + response.safety.description + "</p>");
-            console.log(response.entryExitRequirement.requirementInfo[1].description);
-            for (i = 0; i < response.safety.safetyInfo.length; i++) {
 
-                $(".entry").html("<h5>Entry and Exit:</h5><p> " + response.safety.safetyInfo[i].description + "</p>");
+
+            if (response.climate.description != null) {
+                $(".climate").html("<h5>Climate Conditions:</h5><p> " + response.climate.description + "</p>");
+            } else {
+                $(".climate").html("<h5>Climate Conditions:</h5><p> None </p>");
+            }
+            
+            if (response.safety.description != null) {
+                $(".safety").html("<h5>Safety Considerations:</h5><p> " + response.climate.description + "</p>");
+            } else {
+                $(".safety").html("<h5>Safety Considerations:</h5><p> None </p>");
             }
 
+
+            $(".entry").html("<h5>Entry and Exit:</h5>")
+            var textSafetyArray = [];
+
+            for (i = 0; i < response.safety.safetyInfo.length; i++) {
+                textSafetyArray +=  "<p>" + response.safety.safetyInfo[i].description + "</p>";
+            }
+
+            $(".entryData").html(textSafetyArray);
 
 
             var latitude = parseInt(response.offices[0].latitude);

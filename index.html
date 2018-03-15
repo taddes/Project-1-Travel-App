@@ -11,6 +11,7 @@
 
 
 
+
     <!--Google fonts link -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> -->
     <!-- Firebase Reference -->
@@ -22,10 +23,13 @@
     <script>
         jQuery.ajaxPrefilter(function (options) {
             if (options.crossDomain && jQuery.support.cors) {
-                options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+                options.url = 'https://uncc-cors-proxy.herokuapp.com/' + options.url;
             }
         });
     </script>
+
+     <script src="./assets/javascript/jquery-ui.js"></script>
+
     <!--Bootstrap 4 CDN Reference -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
@@ -36,6 +40,10 @@
         crossorigin="anonymous"></script>
     <!--CSS Link -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/jquery-ui.css">
+<link rel="stylesheet" href="./assets/css/jquery-ui.theme.css">
+
+   
 
     <body>
 
@@ -117,7 +125,7 @@
                                 </form>
                                 <div class="card" id="weath" style="width: 18rem;">
                                     <div class="card-body bg-dark text-white">
-                                        <h5 class="card-title" id="weatherHead">Current Weather Details</h5>
+                                        <h5 class="card-title" id="weatherHead">Please Enter a City</h5>
                                         <div class="temp">Current Temperature:</div>
                                         <div class="high">High:</div>
                                         <div class="low">Low:</div>
@@ -133,14 +141,18 @@
 
 
                     <div class="row">
-                        <div class="col-sm-9 col-md-9 col-lg-9">
+                        <div class="stuff col-sm-9 col-md-9 col-lg-9">
                             <div id="info">
                                 <div class="country"></div>
+                                <div class="infoContent">
                                 <div class="law"></div>
+                                <div class="lawData"></div>
                                 <div class="travelAD"></div>
                                 <div class="climate"></div>
                                 <div class="safety"></div>
                                 <div class="entry"></div>
+                                <div class="entryData"></div>
+                                </div>
                             </div>
                         </div>
 
