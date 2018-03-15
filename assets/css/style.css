@@ -95,7 +95,14 @@ h2,
     width: 240px;
     
 }
+
 #countrySearch {
    margin-left: 15px;
    
+
+
+.city-btn{
+    width: 100%;
+    margin-bottom: 10px;
+
 }
