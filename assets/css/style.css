@@ -52,10 +52,10 @@ p{
 h5{
     padding:5px;
 }
-
+h2,
 #events{
     background-color: #494E6B;
-    color: red;
+    color: whitesmoke;
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;

@@ -172,7 +172,9 @@ $(document).ready(function () {
         })
 
     });
-
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    } 
 
 
     $("#citySubmit").on("click", function (event) {
@@ -220,10 +222,15 @@ $(document).ready(function () {
             }).then(function (eventBrite) {
                 var eventsB = eventBrite.events;
                 var text = [];
+                
                 for(i=0; i<5; i++){
-                    text += "<h2>Events: </h2><a href="+eventsB[i].url+">"+eventsB[i].url+"</a><br>"
+                    text += "<p>" + eventsB[i].name.text+ "</p>" + 
+                    "<a href="+eventsB[i].url+">"+eventsB[i].url+"</a><br>"
+                    
                 }
-                $("#events").append(text);
+                $("#events").prepend(text);
+                $("#events").prepend("<h3>" + city.capitalize() + ", " + openWeather.sys.country + "</h3>");
+                
                 console.log(eventBrite);
             })
         })
