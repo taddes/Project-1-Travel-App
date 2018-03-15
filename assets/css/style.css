@@ -91,7 +91,7 @@ h2,
 #citySearch {
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-right: 20px;
+    margin-left: 15px;
     width: 240px;
     
 }
@@ -99,7 +99,7 @@ h2,
 #countrySearch {
    margin-left: 15px;
    
-
+}
 
 .city-btn{
     width: 100%;
