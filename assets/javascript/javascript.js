@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAx4ahxYbpCVsvkg0DJepiILkxWVepORBM",
@@ -80,7 +82,7 @@ $(document).ready(function () {
 
 
     //tuGo AJAX call to populate drop down country options
-
+    
    
     $.ajax({
         url: queryUrl1,
@@ -130,7 +132,8 @@ $(document).ready(function () {
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
         event.preventDefault();
-  
+
+        $("#dropDownCountry").tooltip();
 
         var submitted = $("select#dropDownCountry option:checked").val();
         console.log(submitted);
@@ -147,7 +150,7 @@ $(document).ready(function () {
             console.log(response);
 
             var advisories = response.advisories;
-            $(".country").html("<div><h3>Country: " + response.name + "</h3></div>");
+            $(".country").html("<div><h3>Country: " + response.name + "</h3><img src='http://www.countryflags.io/" + response.code + "/flat/64.png'></div>");
             console.log(response.lawAndCulture.lawAndCultureInfo);
 
             // for (i = 0; i < response.lawAndCulture.lawAndCultureInfo.length; i++) {
@@ -155,33 +158,50 @@ $(document).ready(function () {
             // }
 
            
-            $(".law").html("<div><h5>Law and Culture:</h5></div>");
+            $(".law").html("<div><h5>Law and Culture:</h5>");
 
             var textLawArray = [];
 
             for (i = 0; i < response.lawAndCulture.lawAndCultureInfo.length; i++) {
-                textLawArray += "<div><p>" + response.lawAndCulture.lawAndCultureInfo[i].category + ": " + response.lawAndCulture.lawAndCultureInfo[i].description + "</p></div>";
+                textLawArray += "<p>" + response.lawAndCulture.lawAndCultureInfo[i].category + ": " + response.lawAndCulture.lawAndCultureInfo[i].description + "</p>";
             }
-            $(".lawData").html("<div>" + textLawArray + "</div>");
-
+            $(".lawData").html( textLawArray );
+            $(".allLaw").accordion({
+                collapsible: true,
+                active: false
+            });
            
-            $(".travelAD").html("<h5>Travel Advisories:</h5><p> " + response.advisories.description + "</p>");
+            $(".travelAD").html("</div><h5>Travel Advisories:</h5><p> " + response.advisories.description + "</p>");
+            $(".travelAD").accordion({
+                collapsible: true,
+                active: false
+            });
+            
 
 
             if (response.climate.description != null) {
                 $(".climate").html("<h5>Climate Conditions:</h5><p> " + response.climate.description + "</p>");
+                
             } else {
                 $(".climate").html("<h5>Climate Conditions:</h5><p> None </p>");
             }
+            $(".climate").accordion({
+                collapsible: true,
+                active: false
+            });
             
             if (response.safety.description != null) {
                 $(".safety").html("<h5>Safety Considerations:</h5><p> " + response.climate.description + "</p>");
             } else {
                 $(".safety").html("<h5>Safety Considerations:</h5><p> None </p>");
             }
+            $(".safety").accordion({
+                collapsible: true,
+                active: false
+            });
 
+            $(".entry").html("<h5>Entry and Exit:</h5><div>")
 
-            $(".entry").html("<h5>Entry and Exit:</h5>")
             var textSafetyArray = [];
 
             for (i = 0; i < response.safety.safetyInfo.length; i++) {
@@ -189,6 +209,10 @@ $(document).ready(function () {
             }
 
             $(".entryData").html(textSafetyArray);
+            $(".allEntry").accordion({
+                collapsible: true,
+                active: false
+            });
 
 
             var latitude = parseInt(response.offices[0].latitude);
@@ -244,16 +268,31 @@ $(document).ready(function () {
             // Adding a class of city-btn 
             a.addClass("city-btn");
             // Adding a data-attribute so we can easily search for the desired city later
-            a.attr("data-name", recentCities[i]);
-            // Putting the city name on each of our buttons
-            a.text(recentCities[i]);
-            // Adding the button to the buttons-view div
-            $("#buttons-view").prepend(a);
+            if (recentCities[i] !== "") {
+                a.attr("data-name", recentCities[i]);
+                // Putting the city name on each of our buttons
+                a.text(recentCities[i]);
+                // Adding the button to the buttons-view div
+                $("#buttons-view").prepend(a);
+            }
         }
     }
 
     $("#citySubmit").on("click", function (event) {
         event.preventDefault();
+
+
+        var testString = document.getElementById("inputCity").value;
+        var numberArray = [0,1,2,3,4,5,6,7,8,9]
+        for (var i = 0; i < testString.length; i++) {
+            var testSubstring = testString.substring(i, i+1)
+            if (numberArray.indexOf(parseInt(testSubstring)) > -1 ) {
+                $("#demo").text("Input Invalid, Please Enter a City");
+                return
+            } else {
+                $("#demo").text("Valid Input");
+            }
+        } 
 
         var city = $("#inputCity").val().trim();
         recentCities.push(city);
@@ -303,12 +342,20 @@ $(document).ready(function () {
                 var text = [];
                 
                 for(i=0; i<5; i++){
-                    text += "<p>" + eventsB[i].name.text+ "</p>" + 
-                    "<a href="+eventsB[i].url+">"+eventsB[i].url+"</a><br>"
-                    
+                    text += "<div class='eventDisplay'><p>" + eventsB[i].name.text+ "</p>" + 
+                    "<p><a href="+eventsB[i].url+">"+eventsB[i].url+"</a></p></div>"
                 }
+
+                
+                
                 $("#events").prepend(text);
-                $("#events").prepend("<h3>" + city.capitalize() + ", " + openWeather.sys.country + "</h3>");
+                $("#events").prepend("<br><h3>" + city.capitalize() + ", " + openWeather.sys.country + "</h3></div>");
+                $(".eventDisplay").accordion({
+                    collapsible: true,
+                    active: false,
+                    heightStyle: "content"
+                })
+              
                 
                 console.log(eventBrite);
             })
@@ -350,26 +397,8 @@ $(document).ready(function () {
                 position: uluru,
                 map: map
             });
-            //EventBrite
-            var eventBriteApiKey = "CE4R5PQ42MM4QQYFKNWR"
-            var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + city + "&token=" + eventBriteApiKey
-            $.ajax({
-                url: queryUrl4,
-                method: "GET"
-            }).then(function (eventBrite) {
-                var eventsB = eventBrite.events;
-                var text = [];
-                
-                for(i=0; i<5; i++){
-                    text += "<p>" + eventsB[i].name.text+ "</p>" + 
-                    "<a href="+eventsB[i].url+">"+eventsB[i].url+"</a><br>"
-                    
-                }
-                $("#events").prepend(text);
-                $("#events").prepend("<h3>" + city.capitalize() + ", " + openWeather.sys.country + "</h3>");
-                
-                console.log(eventBrite);
-            })
+
+
         })
     });
 
