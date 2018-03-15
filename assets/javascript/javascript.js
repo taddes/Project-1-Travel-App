@@ -230,11 +230,36 @@ $(document).ready(function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
     } 
 
+    var recentCities = [];
+    function renderButtons() {
+
+        // Deleting the cities prior to adding new cities to prevent repeat buttons
+        $("#buttons-view").empty();
+
+        // Looping through the array of cities
+        for (var i = 0; i < recentCities.length; i++) {
+
+            // Dynamicaly generating buttons for each city in the array
+            var a = $("<button>");
+            // Adding a class of city-btn 
+            a.addClass("city-btn");
+            // Adding a data-attribute so we can easily search for the desired city later
+            a.attr("data-name", recentCities[i]);
+            // Putting the city name on each of our buttons
+            a.text(recentCities[i]);
+            // Adding the button to the buttons-view div
+            $("#buttons-view").prepend(a);
+        }
+    }
 
     $("#citySubmit").on("click", function (event) {
         event.preventDefault();
 
         var city = $("#inputCity").val().trim();
+        recentCities.push(city);
+        renderButtons(); 
+
+        $("#inputCity").val("");
 
         var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
         var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + openWeatherApiKey;
@@ -289,6 +314,64 @@ $(document).ready(function () {
             })
         })
     })
+
+    $(document).on("click", ".city-btn", function() {
+
+        var city = $(this).attr("data-name");
+
+        var openWeatherApiKey = "facab843d1108e8cef093e69a2ef4979";
+        var queryUrl5 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + openWeatherApiKey;
+        $.ajax({
+            url: queryUrl5,
+            method: "GET"
+        }).then(function (openWeather) {
+            $("#weatherHead").text(openWeather.name + " Weather Details");
+            $(".temp").text("Current Temperature: " + openWeather.main.temp + "°F");
+            $(".high").text("High: " + openWeather.main.temp_max + "°F");
+            $(".low").text("Low: " + openWeather.main.temp_min + "°F");
+            $(".weather").text("Weather Conditions: " + openWeather.weather[0].main);
+            $(".desc").text("Weather Details: " + openWeather.weather[0].description);
+            $(".humidity").text("Humidity: " + openWeather.main.humidity + "%");
+            $(".wind").text("Wind Speed: " + openWeather.wind.speed + " m/s");
+
+            var latitude = parseInt(openWeather.coord.lat);
+            console.log(latitude);
+
+            var longitude = parseInt(openWeather.coord.lon);
+            console.log(longitude);
+
+
+            var uluru = { lat: latitude, lng: longitude };
+            var map = new google.maps.Map(document.getElementById('mapContent'), {
+                zoom: 5,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+            //EventBrite
+            var eventBriteApiKey = "CE4R5PQ42MM4QQYFKNWR"
+            var queryUrl4 = "https://www.eventbriteapi.com/v3/events/search/?q=" + city + "&token=" + eventBriteApiKey
+            $.ajax({
+                url: queryUrl4,
+                method: "GET"
+            }).then(function (eventBrite) {
+                var eventsB = eventBrite.events;
+                var text = [];
+                
+                for(i=0; i<5; i++){
+                    text += "<p>" + eventsB[i].name.text+ "</p>" + 
+                    "<a href="+eventsB[i].url+">"+eventsB[i].url+"</a><br>"
+                    
+                }
+                $("#events").prepend(text);
+                $("#events").prepend("<h3>" + city.capitalize() + ", " + openWeather.sys.country + "</h3>");
+                
+                console.log(eventBrite);
+            })
+        })
+    });
 
     //Google Fly
     $.ajax({
