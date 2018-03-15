@@ -12,8 +12,7 @@
 
 
 
-    <!--Google fonts link -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> -->
+ 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <!-- Moment.js Reference -->
@@ -38,6 +37,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+           <!--Google fonts link -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
     <!--CSS Link -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/jquery-ui.css">
@@ -117,8 +118,8 @@
                                         <div class="card-body bg-dark text-white">
                                             <div class="form-group">
                                                 <label for="sel1">Select Country</label>
-                                                <select class="form-control text-dark" id="dropDownCountry"></select>
-                                                <button type="submit" class="btn btn-secondary" id="countrySubmit">Submit</button>
+                                                <select class="form-control text-dark" title="Select Country" id="dropDownCountry"></select>
+                                                <button type="submit" class="btn btn-secondary" title="Submit" id="countrySubmit">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -145,13 +146,17 @@
                             <div id="info">
                                 <div class="country"></div>
                                 <div class="infoContent">
+                                    <div class="allLaw">
                                 <div class="law"></div>
                                 <div class="lawData"></div>
+                            </div> <!--all law-->
                                 <div class="travelAD"></div>
                                 <div class="climate"></div>
                                 <div class="safety"></div>
+                                <div class="allEntry">
                                 <div class="entry"></div>
                                 <div class="entryData"></div>
+                                </div> <!--close allEntry -->
                                 </div>
                             </div>
                         </div>
@@ -163,8 +168,9 @@
                                         <div class="card-body bg-dark text-white">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Enter City</label>
-                                                <input type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Enter City">
-                                                <button type="submit" class="btn btn-secondary" id="citySubmit">Submit</button>
+                                                <input type="text" class="form-control" title="Enter City Name" id="inputCity" aria-describedby="emailHelp" placeholder="Enter City">
+                                                <button type="submit" class="btn btn-secondary" title="submit" id="citySubmit">Submit</button>
+                                                <p id="demo"></p> 
                                             </div>
                                         </div>
                                     </div>
