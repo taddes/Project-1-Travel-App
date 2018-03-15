@@ -1,7 +1,3 @@
-#mapContent {
-    height: 400px;
-    width: 100%;
-   }
 
 .carousel-item{
     height:320px;
@@ -15,10 +11,10 @@
  margin-top: 10px; 
  
 }
-#citySubmit {
-    margin-top: 10px;
-}
 
+.card{
+    opacity: .85;
+}
 
 
 #footer {
@@ -27,7 +23,7 @@
 
 body { 
     /* The image used */
-    background-image: url("../images/pexels-photo-326311.jpeg");
+    background-image: url("../images/mountains-night-clouds-lake.jpg");
 
     /* Full height */
     height: 100%; 
@@ -36,8 +32,65 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 } 
+
+/* fix coloring make the text bolder and format with card colors */
+
 #info{
-    background-color: white;
+    background-color: #494E6B;
+    color: white;
+    opacity: .75;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+h6,
+p{
+    padding:10px;
+}
+h5{
+    padding:5px;
 }
 
+#events{
+    background-color: #494E6B;
+    color: red;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#mapContent {
+    height: 465px;
+    width: 100%;
+   }
+
+.caro{
+    padding: 20px;
+    margin-top: 60px;
+    
+}
+#countrySubmit {
+ margin-top: 10px; 
+ 
+ 
+}
+#citySubmit {
+    margin-top: 20px;
+    
+}
+#weath{
+    margin-top: 20px;
+    margin-right: 5px;
+    
+}
+
+#citySearch {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    width: 240px;
+    
+}
