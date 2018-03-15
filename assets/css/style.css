@@ -83,19 +83,26 @@ h2,
 }
 #weath{
     margin-top: 20px;
-    margin-right: 5px;
+    margin-right: 15px;
+    margin-left: 15px;
     
 }
 
 #citySearch {
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-right: 5px;
+    margin-right: 20px;
     width: 240px;
     
 }
 
+#countrySearch {
+   margin-left: 15px;
+   
+
+
 .city-btn{
     width: 100%;
     margin-bottom: 10px;
+
 }
