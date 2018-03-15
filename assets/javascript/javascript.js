@@ -1,5 +1,7 @@
 $(document).ready(function () {
-
+    $("#info").hide();
+    $("#eventCity").hide();
+    $("#events").hide();
     
 
     // Initialize Firebase
@@ -132,7 +134,7 @@ $(document).ready(function () {
     //Grab the selected country
     $("#countrySubmit").on("click", function (event) {
         event.preventDefault();
-
+        $("#info").show();
         $("#dropDownCountry").tooltip();
 
         var submitted = $("select#dropDownCountry option:checked").val();
@@ -280,6 +282,9 @@ $(document).ready(function () {
 
     $("#citySubmit").on("click", function (event) {
         event.preventDefault();
+        $("#eventCity").text("City Events: ");
+        $("#eventCity").show();
+        $("#events").show();
 
 
         var testString = document.getElementById("inputCity").value;
