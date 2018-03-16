@@ -59,7 +59,7 @@ $(document).ready(function() {
     }
   });
 
-  //Firbase population of country list
+  //Firebase population of country list
   travelDatabase
     .ref("countries")
     .once("value")
@@ -302,7 +302,7 @@ $(document).ready(function() {
             "</p>" +
             "<p><a href=" +
             eventsB[i].url +
-            ">" +
+            " target='_blank'>" +
             eventsB[i].url +
             "</a></p></div>";
         }
