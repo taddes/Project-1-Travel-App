@@ -87,12 +87,12 @@ $(document).ready(function() {
     console.log(submitted);
 
     //second AJAX call to tuGO API to get country information
-
+    //original api key OG: cc6xkamkpx9jq843fpzt244m Erik's: q6d4g47pkz632ukda7e29spg 
     $.ajax({
       url: queryUrl1 + "/" + submitted,
       method: "GET",
       headers: {
-        "X-Auth-API-Key": "xspyubpakcte72gaz2tw6qdd"
+        "X-Auth-API-Key": "q6d4g47pkz632ukda7e29spg "
       }
     }).then(function(response) {
       console.log(response);
